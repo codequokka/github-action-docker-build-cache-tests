@@ -10,6 +10,7 @@ on:
     branches:
       - 'main'
 
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -23,8 +24,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: |
-            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.repository.name }}
+          images: ${{ github.repository_owner }}/${{ github.event.repository.name }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
